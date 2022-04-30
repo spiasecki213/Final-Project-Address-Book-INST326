@@ -86,6 +86,59 @@ def display_contacts():
 display_contacts()
 
 """ Labels, Entries, and Buttons """
+# First Name
+fnameLabel = Label(root, text="First Name:").grid(row=1,column=3)
+fnameEntry = Entry(root, textvariable=first_name).grid(row=1,column=4)
+# Last Name
+lnameLabel = Label(root, text="Last Name:").grid(row=2,column=3)
+lnameEntry = Entry(root, textvariable=last_name).grid(row=2,column=4)
+# Address 1
+street1Label = Label(root, text="Address 1:").grid(row=3,column=3)
+street1Entry = Entry(root,textvariable=street1).grid(row=3,column=4)
+# Address 2
+street2Label = Label(root, text="Address 2:").grid(row=4,column=3)
+street2Entry = Entry(root,textvariable=street2).grid(row=4,column=4)
+# City
+cityLabel = Label(root, text="City:").grid(row=5,column=3)
+cityEntry = Entry(root,textvariable=city).grid(row=5,column=4)
+# State
+stateLabel = Label(root, text="State:").grid(row=6,column=3)
+stateEntry = Entry(root,textvariable=state).grid(row=6,column=4)
+# Zipcode
+zipcodeLabel = Label(root, text="Zipcode:").grid(row=7,column=3)
+zipcodeEntry = Entry(root,textvariable=zipcode).grid(row=7,column=4)
+# Home Phone
+homeLabel = Label(root, text="Home Phone:").grid(row=8,column=3)
+homeEntry = Entry(root,textvariable=homephone).grid(row=8,column=4)
+# Cell Phone
+cellLabel = Label(root, text="Cell Phone:").grid(row=9,column=3)
+cellEntry = Entry(root,textvariable=cellphone).grid(row=9,column=4)
+# Email Address
+emailLabel = Label(root, text="Email:").grid(row=10,column=3)
+emailEntry = Entry(root,textvariable=email).grid(row=10,column=4)
+# Alternate Email Address
+altemailLabel = Label(root, text="Alternate Email:").grid(row=11,column=3)
+altemailEntry = Entry(root,textvariable=alt_email).grid(row=11,column=4)
+# Birthday
+bdayLabel = Label(root, text="Birthday:").grid(row=12,column=3)
+bdayEntry = Entry(root,textvariable=birthday).grid(row=12,column=4)
+# Notes
+notesLabel = Label(root, text="Notes:").grid(row=13,column=3)
+notesEntry = Entry(root,textvariable=notes).grid(row=13,column=4,rowspan=2, pady=10)
+ 
+ 
+addButton = Button(root, text="Add", command=add_contact()).grid(row=16,column=3, padx=10)
+#editButton = Button(root, text="Edit",command=edit_contact()).grid(row=16,column=4, padx=10)
+#viewButton = Button(root, text="View",command=view_contact()).grid(row=16,column=5,padx=10)
+deleteButton = Button(root, text="Delete",command=delete_contact()).grid(row=17,column=3,padx=10)
+ 
+def display_contacts():
+    contact_list.sort()
+    box.delete(0, END)
+    for fn,ln,s1,s2,cit,sta,zi,hp,cp,em,ae,bd,notes in contact_list:
+        box.insert(END, fn)
+ 
+display_contacts()
 
 
 if __name__ == "__main__":
