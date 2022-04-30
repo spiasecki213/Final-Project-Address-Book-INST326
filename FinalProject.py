@@ -2,26 +2,14 @@ import tkinter as tk
 
 """ Create new address book window """
 
-# create list of contacts
-
-
-# list of variables for contact info
 
 
 """ Functions """
 
-# selected contact
 
-# add contact
 
-# edit contact
+""" Labels, Entries, and Buttons """
 
-# delete contact
 
-# view contact
-
-# close window
-
-# sort the list
-
-# if __name__ == main statement
+if __name__ == "__main__":
+    pass
