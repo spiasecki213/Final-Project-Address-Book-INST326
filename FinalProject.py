@@ -125,6 +125,12 @@ class MainWindow(object):
         """ CENTER FRAME COMPONENTS """
         # function to delete temporary text when the entry box is clicked
         def temp_text(e):
+            """ Deletes the temporary text in the
+            search bar
+
+            Args:
+                e (arg): positional argument
+            """ 
             self.search_entry.delete(0,"end")
 
         # search bar
