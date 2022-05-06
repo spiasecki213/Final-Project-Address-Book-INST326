@@ -1,145 +1,166 @@
 from tkinter import *
+import tkinter
+from ttkwidgets.autocomplete import AutocompleteCombobox
+import tkinter.messagebox as mb
+import sqlite3 as sql
 
-""" Create new address book window """
-root = Tk()
-root.title("Address Book")
+# Connect and initialize the database that will store all of the contacts
+connector = sql.connect('contacts.db')
+cursor = connector.cursor()
 
-contact_list = []
+cursor.execute("""CREATE TABLE IF NOT EXISTS ADDRESS_BOOK (S_NO INTEGER PRIMARY KEY 
+                AUTOINCREMENT NOT NULL, FIRSTNAME TEXT, LASTNAME TEXT, ADDRESS TEXT, 
+                PHONENUMBER TEXT, EMAIL TEXT, ALTEMAIL TEXT, PRONOUNS TEXT, NOTES TEXT, 
+                GROUPS TEXT)"""
+)
 
-# initialize contact variables
-first_name = StringVar()
-last_name = StringVar()
-street1 = StringVar()
-street2 = StringVar()
-city = StringVar()
-state = StringVar()
-zipcode = StringVar()
-homephone = StringVar()
-cellphone = StringVar()
-email = StringVar()
-alt_email = StringVar()
-birthday = StringVar()
-notes = StringVar()
+class MainWindow(object):
 
-# scrollbar and list of contacts displayed
-scrollbar = Scrollbar(root)
-box = Listbox(root, yscrollcommand=scrollbar.set, height=18)
-box.grid(row=1, column=0, rowspan=13, padx=18)
-scrollbar.config(command=box.yview)
+    def add_contact(self):
+        pass
 
-""" Functions """
-def selected_contact():
-    return int(box.curselection()[0])
- 
- 
-def add_contact():
-    contact_list.append([first_name.get(), last_name.get(), street1.get(),
-                        street2.get(), city.get(), state.get(), zipcode.get(),
-                        homephone.get(), cellphone.get(), email.get(),
-                        alt_email.get(), birthday.get(), notes.get()])  
-    display_contacts()
- 
-# edit contact
-def edit_contact():
-    contact_list[selected_contact()] = [first_name.get(), last_name.get(),
-                        street1.get(), street2.get(), city.get(),
-                        state.get(), zipcode.get(),homephone.get(),
-                        cellphone.get(), email.get(),alt_email.get(),
-                        birthday.get(), notes.get()]
-    display_contacts()
- 
-def delete_contact():
-    del contact_list[selected_contact()]
-    display_contacts()
- 
- 
-def view_contact():
-    fn,ln,s1,s2,cit,sta,zi,hp,cp,em,ae,bd,n= contact_list[selected_contact()]
-    first_name.set(fn)
-    last_name.set(ln)
-    street1.set(s1)
-    street2.set(s2)
-    city.set(cit)
-    state.set(sta)
-    zipcode.set(zi)
-    homephone.set(hp)
-    cellphone.set(cp)
-    email.set(em)
-    alt_email.set(ae)
-    birthday.set(bd)
-    notes.set(n)
- 
-def exit_window():
-    root.destroy()
- 
-def reset_fields():
-    for x in contact_list:
-        for y in contact_list[x]:
-            y.set('')
- 
-def display_contacts():
-    contact_list.sort()
-    box.delete(0, END)
-    for fn,ln,s1,s2,cit,sta,zi,hp,cp,em,ae,bd,notes in contact_list:
-        box.insert(END, fn)
- 
-display_contacts()
+    def list_contacts(self):
+        pass
 
-""" Labels, Entries, and Buttons """
-# First Name
-fnameLabel = Label(root, text="First Name:").grid(row=1,column=3)
-fnameEntry = Entry(root, textvariable=first_name).grid(row=1,column=4)
-# Last Name
-lnameLabel = Label(root, text="Last Name:").grid(row=2,column=3)
-lnameEntry = Entry(root, textvariable=last_name).grid(row=2,column=4)
-# Address 1
-street1Label = Label(root, text="Address 1:").grid(row=3,column=3)
-street1Entry = Entry(root,textvariable=street1).grid(row=3,column=4)
-# Address 2
-street2Label = Label(root, text="Address 2:").grid(row=4,column=3)
-street2Entry = Entry(root,textvariable=street2).grid(row=4,column=4)
-# City
-cityLabel = Label(root, text="City:").grid(row=5,column=3)
-cityEntry = Entry(root,textvariable=city).grid(row=5,column=4)
-# State
-stateLabel = Label(root, text="State:").grid(row=6,column=3)
-stateEntry = Entry(root,textvariable=state).grid(row=6,column=4)
-# Zipcode
-zipcodeLabel = Label(root, text="Zipcode:").grid(row=7,column=3)
-zipcodeEntry = Entry(root,textvariable=zipcode).grid(row=7,column=4)
-# Home Phone
-homeLabel = Label(root, text="Home Phone:").grid(row=8,column=3)
-homeEntry = Entry(root,textvariable=homephone).grid(row=8,column=4)
-# Cell Phone
-cellLabel = Label(root, text="Cell Phone:").grid(row=9,column=3)
-cellEntry = Entry(root,textvariable=cellphone).grid(row=9,column=4)
-# Email Address
-emailLabel = Label(root, text="Email:").grid(row=10,column=3)
-emailEntry = Entry(root,textvariable=email).grid(row=10,column=4)
-# Alternate Email Address
-altemailLabel = Label(root, text="Alternate Email:").grid(row=11,column=3)
-altemailEntry = Entry(root,textvariable=alt_email).grid(row=11,column=4)
-# Birthday
-bdayLabel = Label(root, text="Birthday:").grid(row=12,column=3)
-bdayEntry = Entry(root,textvariable=birthday).grid(row=12,column=4)
-# Notes
-notesLabel = Label(root, text="Notes:").grid(row=13,column=3)
-notesEntry = Entry(root,textvariable=notes).grid(row=13,column=4,rowspan=2, pady=10)
- 
- 
-addButton = Button(root, text="Add", command=add_contact()).grid(row=16,column=3, padx=10)
-#editButton = Button(root, text="Edit",command=edit_contact()).grid(row=16,column=4, padx=10)
-#viewButton = Button(root, text="View",command=view_contact()).grid(row=16,column=5,padx=10)
-deleteButton = Button(root, text="Delete",command=delete_contact()).grid(row=17,column=3,padx=10)
- 
-def display_contacts():
-    contact_list.sort()
-    box.delete(0, END)
-    for fn,ln,s1,s2,cit,sta,zi,hp,cp,em,ae,bd,notes in contact_list:
-        box.insert(END, fn)
- 
-display_contacts()
+    def delete_contact(self):
+        pass
 
+    def delete_all_contacts(self):
+        pass
+
+    def view_contact(self):
+        pass
+
+    def clear_fields(self):
+        pass
+
+    def search(self):
+        pass
+
+    def __init__(self, root):
+        # Initialize the GUI window
+        self.root = root
+        root.title("Address Book")
+        root.geometry('700x550')
+        root.resizable(0,0)
+
+        # Create the StringVar contact info variables
+        self.fname_strvar = StringVar()
+        self.lname_strvar = StringVar()
+        self.phone_strvar = StringVar()
+        self.email_strvar = StringVar()
+        self.altemail_strvar = StringVar()
+        self.pronouns_strvar = StringVar()
+        self.group_strvar = StringVar()
+        self.search_strvar = StringVar() #stringvar for search bar
+
+        # Title label
+        Label(self.root, text="UMD Address Book", font=('Times New Roman', 24, "bold"), 
+                    bg='red4', fg='White').pack(side=TOP, fill=X)
+
+        # Color and font variables
+        lf_bg = 'light goldenrod'  # Lightest Shade
+        cf_bg = 'gold2'
+        rf_bg = 'gold3'  # Darkest Shade
+        frame_font = ("Garamond", 13, "bold")
+        entry_font = ("Arial", 10)
+        button_font = ("Garamond", 11, "bold")
+        group_values = ["Student", "Professor", "TA", "AMP", "Administrator", "Other"]
+
+        # Left Frame
+        left_frame = Frame(root, bg=lf_bg)
+        left_frame.place(relx=0, relheight=1, y=37, relwidth=0.35)
+        Label(left_frame, text="Contact Info", font=('Times New Roman', 14, "italic"), 
+                    bg='Maroon', fg='White').pack(side=TOP, fill=X) # left frame label
+        # Center Frame
+        center_frame = Frame(root, bg=cf_bg)
+        center_frame.place(relx=0.35, relheight=1, y=37, relwidth=0.3)
+        Label(center_frame, text="Search/Edit", font=('Times New Roman', 14, "italic"), 
+                    bg='Maroon', fg='White').pack(side=TOP, fill=X) # center frame label
+        # Frame on the right
+        right_frame = Frame(root, bg=rf_bg)
+        right_frame.place(relx=0.65, relwidth=0.35, relheight=1, y=37)
+
+        """ LEFT FRAME COMPONENTS """
+        # first name
+        Label(left_frame, text="First Name:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.1)
+        fname_Entry = Entry(left_frame, width=17, font=entry_font, textvariable=self.fname_strvar)
+        fname_Entry.place(relx=0.44, rely=0.1)
+        # last name
+        Label(left_frame, text="Last Name:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.15)
+        lname_Entry = Entry(left_frame, width=17, font=entry_font, textvariable=self.lname_strvar)
+        lname_Entry.place(relx=0.44, rely=0.15)
+        # address
+        Label(left_frame, text="Address:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.2)
+        self.address_entry = Text(left_frame, width=17, font=entry_font, height=4)
+        self.address_entry.place(relx=0.44, rely=0.2)
+        # phone number
+        Label(left_frame, text="Phone #:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.35)
+        phone_Entry = Entry(left_frame, width=17, font=entry_font, textvariable=self.phone_strvar)
+        phone_Entry.place(relx=0.44, rely=0.35)
+        # email address
+        Label(left_frame, text="Email:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.4)
+        email_Entry = Entry(left_frame, width=17, font=entry_font, textvariable=self.email_strvar)
+        email_Entry.place(relx=.44, rely=0.4)
+        # alternate email address
+        Label(left_frame, text="Alt. Email:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.45)
+        altemail_Entry = Entry(left_frame, width=17, font=entry_font, textvariable=self.altemail_strvar)
+        altemail_Entry.place(relx=.44, rely=0.45)
+        # pronouns
+        Label(left_frame, text="Pronouns:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.5)
+        pronouns_Entry = Entry(left_frame, width=17, font=entry_font, textvariable=self.pronouns_strvar)
+        pronouns_Entry.place(relx=.44, rely=0.5)
+        # notes
+        Label(left_frame, text="Notes:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.55)
+        self.notes_entry = Text(left_frame, width=17, font=entry_font, height=5)
+        self.notes_entry.place(relx=.44, rely=0.55)
+        # group
+        Label(left_frame, text="Group:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.72)
+        group_Entry = AutocompleteCombobox(left_frame, width=15, font=entry_font, completevalues=group_values)
+        group_Entry.place(relx=.44, rely=0.72)
+
+        # clear fields button
+        Button(left_frame, text="Clear Fields", font=button_font, width=12, command=self.clear_fields).place(relx=0.3, rely=0.82)
+
+        """ CENTER FRAME COMPONENTS """
+        # function to delete temporary text when the entry box is clicked
+        def temp_text(e):
+            self.search_entry.delete(0,"end")
+
+        # search bar
+        self.search_entry = Entry(center_frame, width=18, 
+            font=("Arial", 12), textvariable=self.search_strvar)
+        self.search_entry.insert(0, "Search Contacts...")
+        self.search_entry.bind("<FocusIn>", temp_text)
+        self.search_entry.place(relx=0.1, rely=0.2)
+        # search button
+        Button(center_frame, text="Search", font=button_font, width=12, command=self.search).place(relx=0.23, rely=0.25)
+
+        # add contact button
+        Button(center_frame, text="Add Contact", font=button_font, width=12, command=self.add_contact).place(relx=0.24, rely=0.4)
+        # view contact button
+        Button(center_frame, text="View Contact", font=button_font, width=12, command=self.view_contact).place(relx=0.24, rely=0.5)
+        # delete contact button
+        Button(center_frame, text="Delete Contact", font=button_font, width=12, command=self.delete_contact).place(relx=0.24, rely=0.6)
+        # delete all contacts button
+        Button(center_frame, text="Delete All Contacts", font=button_font, width=15, command=self.delete_all_contacts).place(relx=0.168, rely=0.7)
+
+
+        """ RIGHT FRAME COMPONENTS """
+        # frame label
+        Label(right_frame, text="Saved Contacts", bg=rf_bg, font=('Garamond', 16)).place(relx=0.2, rely=0.07)
+        # contact listbox
+        self.listbox = Listbox(right_frame, selectbackground='Gray82', 
+                bg='white smoke', font=entry_font, height=20, width=27)
+        self.scroller = Scrollbar(self.listbox, orient=VERTICAL, command=self.listbox.yview)
+        self.scroller.place(relx=0.93, rely=0, relheight=1)
+        self.listbox.config(yscrollcommand=self.scroller.set)
+        self.listbox.place(relx=0.1, rely=0.15)
+
+        self.list_contacts()
 
 if __name__ == "__main__":
-    pass
+    root = tkinter.Tk()
+    r = MainWindow(root)
+    root.update()
+    root.mainloop()
