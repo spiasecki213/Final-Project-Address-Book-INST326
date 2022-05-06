@@ -51,7 +51,6 @@ class MainWindow(object):
         self.email_strvar = StringVar()
         self.altemail_strvar = StringVar()
         self.pronouns_strvar = StringVar()
-        self.group_strvar = StringVar()
         self.search_strvar = StringVar() #stringvar for search bar
 
         # Title label
@@ -116,8 +115,8 @@ class MainWindow(object):
         self.notes_entry.place(relx=.44, rely=0.55)
         # group
         Label(left_frame, text="Group:", bg=lf_bg, font=frame_font).place(relx=0.03, rely=0.72)
-        group_Entry = AutocompleteCombobox(left_frame, width=15, font=entry_font, completevalues=group_values)
-        group_Entry.place(relx=.44, rely=0.72)
+        self.group_entry = AutocompleteCombobox(left_frame, width=15, font=entry_font, completevalues=group_values)
+        self.group_entry.place(relx=.44, rely=0.72)
 
         # clear fields button
         Button(left_frame, text="Clear Fields", font=button_font, width=12, command=self.clear_fields).place(relx=0.3, rely=0.82)
