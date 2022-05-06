@@ -13,3 +13,23 @@ We've created a user interface that is simple and easy enough for any person to 
 ### Note: Code needed to run our program
 One of our import statement includes the code `from ttkwidgets.autocomplete import AutocompleteCombobox`. This widget can be installed with the following code in your command line:
 >`pip install ttkwidgets`
+
+# Bibliography
+*We used these sources to get a better understanding of some aspects of Tkinter and Python, and to help resolve any issues that came up.*
+
+
+Amos, D. (2022, March 30). Python GUI programming with Tkinter. Real Python. Retrieved May 4, 2022, from https://realpython.com/python-gui-tkinter/ 
+
+Colors. wikiPython. (2022, March 22). Retrieved May 1, 2022, from https://www.wikipython.com/tkinter-ttk-tix/summary-information/colors/ 
+
+Create UI using tkinter in Python. Create UI using Tkinter in Python. (n.d.). Retrieved May 1, 2022, from https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python 
+
+Fitzpatrick, M. (2021, November 17). QComboBox - Drop-down selection widget. Python GUIs. Retrieved May 3, 2022, from https://www.pythonguis.com/docs/qcombobox/ 
+
+Jarana, N. (2021, June 10). How to get selected value from Listbox in Tkinter? GeeksforGeeks. Retrieved May 6, 2022, from https://www.geeksforgeeks.org/how-to-get-selected-value-from-listbox-in-tkinter/ 
+
+Kumar, B., &amp; KumarEntrepreneur, B. (2022, February 7). Python Tkinter messagebox + 19 Examples. Python Guides. Retrieved May 5, 2022, from https://pythonguides.com/python-tkinter-messagebox/ 
+
+Rathod, A. K. (2020, December 11). How to hide, recover and delete tkinter widgets? GeeksforGeeks. Retrieved May 5, 2022, from https://www.geeksforgeeks.org/how-to-hide-recover-and-delete-tkinter-widgets/ 
+
+Rora, R. (2021, September 23). PyQt5 – Hide push button on click. GeeksforGeeks. Retrieved May 6, 2022, from https://www.geeksforgeeks.org/pyqt5-hide-push-button-on-click/ 
