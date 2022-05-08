@@ -129,7 +129,17 @@ class MainWindow(object):
             self.list_contacts() # Show the remaining contacts
 
     def delete_all_contacts(self):
-        pass
+         """ Deletes ALL of the address book entries from the listbox
+        and the database
+ 
+        Does not return anything
+        """        
+        # Ask the user if they are sure they want to delete the contact
+        # If they don't, exit the window
+        # If they do want to delete a contact, proceed with deleting the contact
+        delete_all_conf = mb.askquestion('Are you sure?', "Once you delete all of your contacts, there will be no way to recover them.")
+        if delete_all_conf != True:
+            daconf_two = mb.askquestion('Are you really sure?', "If you select yes, there is no going back.")
 
     def view_contact(self):
         """ Shows the selected contact within the fields in the left frame
