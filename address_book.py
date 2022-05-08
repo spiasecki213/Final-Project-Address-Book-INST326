@@ -51,7 +51,20 @@ class MainWindow(object):
         pass
 
     def normal_fields(self):
-        pass
+        """Sets all fields back to normal so they
+        are able to be edited.
+ 
+        Does not return anything
+        """        
+        self.fname_entry.configure(state='normal')
+        self.lname_entry.configure(state='normal')
+        self.address_entry.configure(state='normal')
+        self.phone_entry.configure(state='normal')
+        self.email_entry.configure(state='normal')
+        self.altemail_entry.configure(state='normal')
+        self.pronouns_entry.configure(state='normal')
+        self.notes_entry.configure(state='normal')
+        self.group_entry.configure(state='normal') 
     
     def __init__(self, root):
         # Initialize the GUI window
