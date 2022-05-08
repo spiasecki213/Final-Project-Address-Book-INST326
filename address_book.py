@@ -77,6 +77,23 @@ class MainWindow(object):
         pronouns = self.pronouns_strvar.get()
         notes = self.notes_entry.get(1.0, END)
         group = self.group_entry.get()
+        
+        # If either the first name or last name fields are empty,
+        # push an error message to the user
+            # Otherwise, update the values in the table
+        if fname == '' or lname == '':
+            mb.showerror('Error!', "Please fill in the name fields.")
+        else:
+            contact_update = """UPDATE ADDRESS_BOOK SET FIRSTNAME=?,
+                LASTNAME=?, ADDRESS=?, PHONENUMBER=?, EMAIL=?, ALTEMAIL=?,
+                PRONOUNS=?, NOTES=?, GROUPS=?""" # SQL script
+            cursor.execute(contact_update, [fname, lname, address, phone,
+                email, altemail, pronouns, notes, group]) # Updates the contact info
+            connector.commit()
+            mb.showinfo('Contact edited', "Your contact has been successfully edited.")
+            self.listbox.delete(0, END)
+            self.list_contacts() # Shows the contacts + the newly edited contact
+            self.clear_fields() # Clears the contact fields
 
     def list_contacts(self):
         """ Updates the listbox and shows the contacts
