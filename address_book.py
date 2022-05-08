@@ -417,6 +417,10 @@ class MainWindow(object):
         self.listbox.place(relx=0.1, rely=0.15)
 
         # Button to reset the search bar and listbox
+        self.back_button = Button(right_frame, text="Back", font=button_font, width=12,
+            command=lambda:[self.list_contacts(), hide_widget(self.back_button),
+            self.search_entry.delete(0, END)])
+        hide_widget(self.back_button)
 
         self.list_contacts() # List the contacts when the window opens
 
