@@ -50,7 +50,23 @@ class MainWindow(object):
         pass
 
     def clear_fields(self):
-        pass
+        """ Clears all of the text fields/entries
+ 
+        Does not return anything
+        """    
+        self.normal_fields() # Makes fields editable
+        self.listbox.selection_clear(0, END) # Unselects any contact
+       
+        self.fname_strvar.set('')
+        self.lname_strvar.set('')
+        self.phone_strvar.set('')
+        self.email_strvar.set('')
+        self.altemail_strvar.set('')
+        self.pronouns_strvar.set('')
+        self.group_entry.set('')
+ 
+        self.address_entry.delete(1.0, END)
+        self.notes_entry.delete(1.0, END)
 
     def search(self):
         pass
