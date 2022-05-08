@@ -374,7 +374,8 @@ class MainWindow(object):
         self.search_entry.place(relx=0.1, rely=0.2)
 
         # Search Button
-
+        Button(center_frame, text="Search", font=button_font, width=12,
+            command=lambda:[self.search()]).place(relx=0.23, rely=0.25)
         
         # Add Contact Button
         add_contact_button = Button(center_frame, text="Add Contact", font=button_font, width=12,
