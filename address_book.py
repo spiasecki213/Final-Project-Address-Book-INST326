@@ -203,7 +203,26 @@ class MainWindow(object):
         self.notes_entry.delete(1.0, END)
 
     def search(self):
-        pass
+        """ Searches through the first name column of the database
+        and returns the relevant results
+ 
+        Does not return anything
+        """        
+        query = str(self.search_strvar.get()) # Gets the text value from the search bar
+ 
+        # If the search term isn't empty, search through the address_book
+            # Else, search through the address book
+        if query != '' and query != "Search Contacts...":
+            show_widget(self.back_button)
+            self.listbox.delete(0, END)
+            curr = connector.execute('SELECT * FROM ADDRESS_BOOK WHERE FIRSTNAME LIKE ?', ('%'+query+'%', ))
+            check = curr.fetchall() # Fetches all of the search results
+           
+            # Displays the search results in the listbox
+            for data in check:
+                self.listbox.insert(END, data[1])
+        else:
+            mb.showerror('Error!', "Please enter a search term to proceed.")
 
     def read_only_fields(self):
         """Sets all of the fields to readonly so they
