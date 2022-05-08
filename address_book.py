@@ -128,6 +128,21 @@ class MainWindow(object):
             curr = cursor.execute('SELECT * FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
             values = curr.fetchall()[0]
             
+            # Retrieve the contact info values from the __init__ method
+            self.fname_strvar.set(values[1])
+            self.lname_strvar.set(values[2])
+            self.phone_strvar.set(values[4])
+            self.email_strvar.set(values[5])
+            self.altemail_strvar.set(values[6])
+            self.pronouns_strvar.set(values[7])
+            self.group_entry.set(values[9])
+ 
+            self.address_entry.delete(1.0, END) # Because these are Text values, they are treated differently than Entry values
+            self.address_entry.insert(END, values[3])
+            self.notes_entry.delete(1.0, END)
+            self.notes_entry.insert(END, values[8])
+ 
+            self.read_only_fields() # Makes fields un-editable
 
     def clear_fields(self):
         """ Clears all of the text fields/entries
