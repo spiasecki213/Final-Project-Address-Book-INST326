@@ -24,7 +24,23 @@ class MainWindow(object):
 
     #################### CONTACT FUNCTIONS ####################
     def add_contact(self):
-        pass
+                """Adds a contact to the database and updates
+        the listbox with the newly created contact
+ 
+        Does not return anything
+        """    
+        self.normal_fields() # Makes the fields editable
+ 
+        # Get the text from the __init__ function
+        fname = self.fname_strvar.get()
+        lname = self.lname_strvar.get()
+        address = self.address_entry.get(1.0, END)
+        phone = self.phone_strvar.get()
+        email = self.email_strvar.get()
+        altemail = self.altemail_strvar.get()
+        pronouns = self.pronouns_strvar.get()
+        notes = self.notes_entry.get(1.0, END)
+        group = self.group_entry.get()
 
     def edit_contact(self):
         pass
