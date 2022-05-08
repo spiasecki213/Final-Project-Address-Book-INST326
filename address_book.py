@@ -113,7 +113,21 @@ class MainWindow(object):
         pass
 
     def view_contact(self):
-        pass
+        """ Shows the selected contact within the fields in the left frame
+       
+        Does not return anything
+        """
+        # If the listbox is empty, push an error message to the user
+            # If the listbox is NOT empty but the user hasn't selected a contact, push an error message to the user
+                # If the previous two conditions are satisfied, show the selected contact
+        if self.listbox.size() == 0:
+            mb.showerror('Error!', "There are no contacts to view. Please add a contact to continue.")
+        elif not self.listbox.curselection():
+            mb.showerror('Error!', "No contact selected. Please select a contact to continue.")
+        else:      
+            curr = cursor.execute('SELECT * FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
+            values = curr.fetchall()[0]
+            
 
     def clear_fields(self):
         """ Clears all of the text fields/entries
