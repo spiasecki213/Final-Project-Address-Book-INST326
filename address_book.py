@@ -48,7 +48,20 @@ class MainWindow(object):
         pass
 
     def read_only_fields(self):
-        pass
+        """Sets all of the fields to readonly so they
+        cannot be edited.
+ 
+        Does not return anything
+        """    
+        self.fname_entry.configure(state='readonly')
+        self.lname_entry.configure(state='readonly')
+        self.address_entry.configure(state='disabled')
+        self.phone_entry.configure(state='readonly')
+        self.email_entry.configure(state='readonly')
+        self.altemail_entry.configure(state='readonly')
+        self.pronouns_entry.configure(state='readonly')
+        self.notes_entry.configure(state='disabled')
+        self.group_entry.configure(state='disabled')
 
     def normal_fields(self):
         """Sets all fields back to normal so they
