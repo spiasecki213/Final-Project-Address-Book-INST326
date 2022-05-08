@@ -24,7 +24,7 @@ class MainWindow(object):
 
     #################### CONTACT FUNCTIONS ####################
     def add_contact(self):
-                """Adds a contact to the database and updates
+        """Adds a contact to the database and updates
         the listbox with the newly created contact
  
         Does not return anything
@@ -41,6 +41,25 @@ class MainWindow(object):
         pronouns = self.pronouns_strvar.get()
         notes = self.notes_entry.get(1.0, END)
         group = self.group_entry.get()
+
+        # If either the first name or last name fields are empty,
+        # push an error message to the user
+            # Otherwise, add the values to the table
+        if fname == '' or lname == '':
+            mb.showerror('Error!', "Please fill in the name fields")
+        else:
+            cursor.execute(
+                """INSERT INTO ADDRESS_BOOK (FIRSTNAME, LASTNAME, ADDRESS,
+                PHONENUMBER, EMAIL, ALTEMAIL, PRONOUNS, NOTES, GROUPS)
+                VALUES (?,?,?,?,?,?,?,?,?)""", (fname, lname, address, phone,
+                email, altemail, pronouns, notes, group)
+            )
+            connector.commit() # Commits the data to the database
+            mb.showinfo('Contact added', "Your contact has been successfully added.")
+            self.listbox.delete(0, END)
+            self.list_contacts() # Shows the contacts including the newly added contact
+            self.clear_fields() # Clears the contact fields
+            
 
     def edit_contact(self):
         pass
