@@ -15,10 +15,10 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS ADDRESS_BOOK (S_NO INTEGER PRIMARY 
 
 #################### GLOBAL FUNCTIONS ####################
 def hide_widget(widget):
-    pass
+    widget.place_forget()
 
 def show_widget(widget):
-    pass
+    widget.place(relx=0.3, rely=0.82)
 
 class MainWindow(object):
 
