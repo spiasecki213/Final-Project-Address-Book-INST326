@@ -129,7 +129,7 @@ class MainWindow(object):
             self.list_contacts() # Show the remaining contacts
 
     def delete_all_contacts(self):
-         """ Deletes ALL of the address book entries from the listbox
+        """ Deletes ALL of the address book entries from the listbox
         and the database
  
         Does not return anything
@@ -369,11 +369,17 @@ class MainWindow(object):
                 command=lambda:[self.view_contact(), self.normal_fields(), hide_widget(self.add_button),show_widget(self.save_edit_button)])
         edit_contact_button.place(relx=0.24, rely=0.56)
         # Delete Contact Button
-
+        Button(center_frame, text="Delete Contact", font=button_font, width=12,
+                command=lambda:[self.delete_contact(), hide_widget(self.add_button), 
+                hide_widget(self.edit_button)]).place(relx=0.24, rely=0.7)
         # Delete All Contacts Button
-
+        Button(center_frame, text="Delete All Contacts", font=button_font, width=15,
+                command=lambda:[self.delete_all_contacts(), hide_widget(self.add_button), 
+                hide_widget(self.edit_button)]).place(relx=0.168, rely=0.76)
         # Clear Fields Button
-
+        Button(center_frame, text="Clear Fields", font=button_font, width=12,
+                command=[self.clear_fields(), hide_widget(self.add_button), 
+                hide_widget(self.edit_button)]).place(relx=0.24, rely=0.84)
 
 
         """########################"""
