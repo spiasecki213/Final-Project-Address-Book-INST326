@@ -62,7 +62,21 @@ class MainWindow(object):
 
 
     def edit_contact(self):
-        pass
+        """Allows user to edit an existing contact
+ 
+        Does not return anything
+        """        
+        self.normal_fields() # Makes fields editable
+ 
+        fname = self.fname_strvar.get()
+        lname = self.lname_strvar.get()
+        address = self.address_entry.get(1.0, END)
+        phone = self.phone_strvar.get()
+        email = self.email_strvar.get()
+        altemail = self.altemail_strvar.get()
+        pronouns = self.pronouns_strvar.get()
+        notes = self.notes_entry.get(1.0, END)
+        group = self.group_entry.get()
 
     def list_contacts(self):
         """ Updates the listbox and shows the contacts
