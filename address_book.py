@@ -30,7 +30,15 @@ class MainWindow(object):
         pass
 
     def list_contacts(self):
-        pass
+        """ Updates the listbox and shows the contacts
+ 
+        Does not return anything
+        """        
+        curr = connector.execute('SELECT FIRSTNAME, LASTNAME FROM ADDRESS_BOOK')
+        fetch = curr.fetchall() # Fetches all the contact info from the database
+ 
+        for data in fetch:
+            self.listbox.insert(END, data) # Displays data contact by contact in the listbox
 
     def delete_contact(self):
         pass
