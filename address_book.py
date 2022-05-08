@@ -140,6 +140,16 @@ class MainWindow(object):
         delete_all_conf = mb.askquestion('Are you sure?', "Once you delete all of your contacts, there will be no way to recover them.")
         if delete_all_conf != True:
             daconf_two = mb.askquestion('Are you really sure?', "If you select yes, there is no going back.")
+            if daconf_two == True:
+                pass
+            else:
+                cursor.execute('DELETE FROM ADDRESS_BOOK') # Deletes ALL contacts
+                connector.commit() # Commit the changes to the database
+ 
+                mb.showinfo('Success!', "All of the records in your address book have been deleted")
+               
+                self.listbox.delete(0, END)
+                self.list_contacts()
 
     def view_contact(self):
         """ Shows the selected contact within the fields in the left frame
