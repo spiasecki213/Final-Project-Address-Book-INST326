@@ -107,7 +107,19 @@ class MainWindow(object):
             self.listbox.insert(END, data) # Displays data contact by contact in the listbox
 
     def delete_contact(self):
-        pass
+        """ Deletes the selected contact from the listbox
+        and the database
+ 
+        Does not return anything
+        """        
+        # If no contact is selected, push an error message to the user
+        if not self.listbox.get(ACTIVE):
+            mb.showerror('No contact selected', "Please select a contact you wish to delete.")
+       
+        # Ask the user if they are sure they want to delete the contact
+        # If they don't, exit the window
+        # If they do want to delete a contact, proceed with deleting the contact
+        delete_conf = mb.askquestion('Are you sure?', "Once you delete the selected contact, it will be unable to be recovered.")
 
     def delete_all_contacts(self):
         pass
