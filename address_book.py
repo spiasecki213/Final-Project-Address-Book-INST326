@@ -323,7 +323,8 @@ class MainWindow(object):
                 command=lambda:[hide_widget(self.save_edit_button), show_widget(self.add_button)])
         add_contact_button.place(relx=0.24, rely=0.4)
         # View Contact Button
-
+        Button(center_frame, text="View Contact", font=button_font, width=12,
+                command=lambda:[self.view_contact(), hide_widget(self.add_button), hide_widget(self.edit_button)]).place(relx=0.24, rely=0.48)
         # Edit Contact Button
         edit_contact_button = Button(center_frame, text="Edit Contact", font=button_font, width=12,
                 command=lambda:[self.view_contact(), self.normal_fields(), hide_widget(self.add_button),show_widget(self.save_edit_button)])
