@@ -120,6 +120,13 @@ class MainWindow(object):
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
         delete_conf = mb.askquestion('Are you sure?', "Once you delete the selected contact, it will be unable to be recovered.")
+        
+        if delete_conf == True:
+            cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
+            connector.commit() # Commit the changes to the database
+            mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
+            self.listbox.delete(0, END)
+            self.list_contacts() # Show the remaining contacts
 
     def delete_all_contacts(self):
         pass
