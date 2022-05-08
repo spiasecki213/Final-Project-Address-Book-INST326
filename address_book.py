@@ -59,7 +59,7 @@ class MainWindow(object):
             self.listbox.delete(0, END)
             self.list_contacts() # Shows the contacts including the newly added contact
             self.clear_fields() # Clears the contact fields
-            
+
 
     def edit_contact(self):
         pass
@@ -226,7 +226,9 @@ class MainWindow(object):
 
         ######### BUTTONS #########
         # Add Button
-
+        self.add_button = Button(left_frame, text="Add", font=button_font, width=10,
+            command=lambda:[self.add_contact(), hide_widget(self.add_button)])
+        hide_widget(self.add_button) # Hides the button when the window opens
         # Edit Button
 
 
@@ -255,7 +257,9 @@ class MainWindow(object):
 
         
         # Add Contact Button
-
+        add_contact_button = Button(center_frame, text="Add Contact", font=button_font, width=12,
+                command=lambda:[hide_widget(self.save_edit_button), show_widget(self.add_button)])
+        add_contact_button.place(relx=0.24, rely=0.4)
         # View Contact Button
 
         # Edit Contact Button
