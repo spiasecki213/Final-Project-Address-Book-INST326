@@ -84,11 +84,11 @@ class MainWindow(object):
         if fname == '' or lname == '':
             mb.showerror('Error!', "Please fill in the name fields.")
         else:
-            contact_update = """UPDATE ADDRESS_BOOK SET FIRSTNAME=?,
+            l = self.listbox.get(ACTIVE)
+            cursor.execute("""UPDATE ADDRESS_BOOK SET FIRSTNAME=?,
                 LASTNAME=?, ADDRESS=?, PHONENUMBER=?, EMAIL=?, ALTEMAIL=?,
-                PRONOUNS=?, NOTES=?, GROUPS=? WHERE FIRSTNAME=? AND LASTNAME=?""" # SQL script
-            cursor.execute(contact_update, [fname, lname, address, phone,
-                email, altemail, pronouns, notes, group, self.listbox.get(ACTIVE)]) # Updates the contact info
+                PRONOUNS=?, NOTES=?, GROUPS=?""", (fname, lname, address, phone, 
+                email, altemail, pronouns, notes, group))  # SQL script
             connector.commit()
             mb.showinfo('Contact edited', "Your contact has been successfully edited.")
             self.listbox.delete(0, END)
@@ -119,14 +119,12 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        delete_conf = mb.askquestion('Are you sure?', "Once you delete the selected contact, it will be unable to be recovered.")
+        cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
+        connector.commit() # Commit the changes to the database
+        mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
+        self.listbox.delete(0, END)
+        self.list_contacts() # Show the remaining contacts
         
-        if delete_conf == True:
-            cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
-            connector.commit() # Commit the changes to the database
-            mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
-            self.listbox.delete(0, END)
-            self.list_contacts() # Show the remaining contacts
 
     def delete_all_contacts(self):
         """ Deletes ALL of the address book entries from the listbox
@@ -137,19 +135,14 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        delete_all_conf = mb.askquestion('Are you sure?', "Once you delete all of your contacts, there will be no way to recover them.")
-        if delete_all_conf != True:
-            daconf_two = mb.askquestion('Are you really sure?', "If you select yes, there is no going back.")
-            if daconf_two == True:
-                pass
-            else:
-                cursor.execute('DELETE FROM ADDRESS_BOOK') # Deletes ALL contacts
-                connector.commit() # Commit the changes to the database
- 
-                mb.showinfo('Success!', "All of the records in your address book have been deleted")
-               
-                self.listbox.delete(0, END)
-                self.list_contacts()
+        cursor.execute('DELETE FROM ADDRESS_BOOK') # Deletes ALL contacts
+        connector.commit() # Commit the changes to the database
+
+        mb.showinfo('Success!', "All of the records in your address book have been deleted")
+        
+        self.listbox.delete(0, END)
+        self.list_contacts()
+        
 
     def view_contact(self):
         """ Shows the selected contact within the fields in the left frame
