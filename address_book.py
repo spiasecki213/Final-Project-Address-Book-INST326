@@ -86,9 +86,9 @@ class MainWindow(object):
         else:
             contact_update = """UPDATE ADDRESS_BOOK SET FIRSTNAME=?,
                 LASTNAME=?, ADDRESS=?, PHONENUMBER=?, EMAIL=?, ALTEMAIL=?,
-                PRONOUNS=?, NOTES=?, GROUPS=?""" # SQL script
+                PRONOUNS=?, NOTES=?, GROUPS=? WHERE FIRSTNAME=? AND LASTNAME=?""" # SQL script
             cursor.execute(contact_update, [fname, lname, address, phone,
-                email, altemail, pronouns, notes, group]) # Updates the contact info
+                email, altemail, pronouns, notes, group, self.listbox.get(ACTIVE)]) # Updates the contact info
             connector.commit()
             mb.showinfo('Contact edited', "Your contact has been successfully edited.")
             self.listbox.delete(0, END)
@@ -391,15 +391,15 @@ class MainWindow(object):
         # Delete Contact Button
         Button(center_frame, text="Delete Contact", font=button_font, width=12,
                 command=lambda:[self.delete_contact(), hide_widget(self.add_button), 
-                hide_widget(self.edit_button)]).place(relx=0.24, rely=0.7)
+                hide_widget(self.save_edit_button)]).place(relx=0.24, rely=0.7)
         # Delete All Contacts Button
         Button(center_frame, text="Delete All Contacts", font=button_font, width=15,
                 command=lambda:[self.delete_all_contacts(), hide_widget(self.add_button), 
-                hide_widget(self.edit_button)]).place(relx=0.168, rely=0.76)
+                hide_widget(self.save_edit_button)]).place(relx=0.168, rely=0.76)
         # Clear Fields Button
         Button(center_frame, text="Clear Fields", font=button_font, width=12,
                 command=lambda:[self.clear_fields(), hide_widget(self.add_button), 
-                hide_widget(self.edit_button)]).place(relx=0.24, rely=0.84)
+                hide_widget(self.save_edit_button)]).place(relx=0.24, rely=0.84)
 
 
         """########################"""
