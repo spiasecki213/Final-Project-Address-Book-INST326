@@ -7,9 +7,6 @@ import address_book
 import unittest
 
 class TestMainWindow(unittest.TestCase):
-    #This tests the add_contact method
-    def test_add_contact(self):
-        pass
 
     def test_edit_contact(self):
         """""Tests that the function accurately updates a name"""""
@@ -22,18 +19,6 @@ class TestMainWindow(unittest.TestCase):
         self.assertEqual(new_lname, "Doe") #checks that the new stored name is Doe
         self.assertNotEqual(new_lname, "Done") #checks that the new stored name is not the original name
         assert new_lname is not None #checks that there is a value entered for the last name
-
-    def test_list_contacts(self):
-        pass
-
-    def test_delete_contact(self):
-        pass
-
-    def test_delete_all_contacts(self):
-        pass
-
-    def test_view_contact(self):
-        pass
 
     def test_clear_fields(self):
         """""Tests that the function actually deletes the information in the box while a person is editing a contact"""""
@@ -131,9 +116,6 @@ class TestMainWindow(unittest.TestCase):
         norm_group = self.group_entry.configure(state='normal')
         self.assertEqual(norm_group, state = "normal")
         self.assertNotEqual(norm_group, state = "disabled")
-
-    def test__init__(self, root):
-        pass
 
 if __name__ == "__main__":
     unittest.main()
