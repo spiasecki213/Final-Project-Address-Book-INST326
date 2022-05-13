@@ -64,7 +64,13 @@ class TestMainWindow(unittest.TestCase):
         empty_notes = self.notes_entry.delete(1.0, END) #clears notes box
     
     def test_search(self):
-        pass
+        """""This tests if the person enters a name or nothing into the search box"""""
+        search_ab1 = str(self.search_strvar.get("John Doe")) #sample search is a name in the address book
+        self.assertEqual(search_ab1, "John") #search should return the first name that matches the search
+        search_ab2 = str(self.search_strvar.get('')) #sample search is blank space indicating that user didn't enter a value
+        self.assertEqual(search_ab2, '') #search should return error and prompt user to enter a value
+        search_ab_3 = str(self.search_strvar.get('Search Contacts...')) #sample search is the initial text in search box, indicating no value was entered
+        self.assertEqual(search_ab_3, 'Search Contacts...') #search should return error and prompt user to enter a value
 
     def test_read_only_fields(self):
         pass
