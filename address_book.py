@@ -1,4 +1,11 @@
+"""
+Creates an Address Book
 
+Names: Sam Piasecki, Vanessa Aguocha-Sam, Semi Ayo-Gbenjo
+Assignment: Final Project
+Subject: INST326
+Date: 05_13_22
+"""
 from tkinter import *
 import tkinter
 from turtle import update
