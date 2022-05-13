@@ -27,6 +27,8 @@ Colors. wikiPython. (2022, March 22). Retrieved May 1, 2022, from https://www.wi
   design. The overall look of our program came out really good and that was thanks to this source. 
 
 Create UI using tkinter in Python. Create UI using Tkinter in Python. (n.d.). Retrieved May 1, 2022, from https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python
+  This was another introductory source we used in order to familiarize ourselves with Tkinter in Python. Even though the majority of the ifnormation in this source
+  reflected that os the Python GUI Programming with Tkinter source, using them both really helped us solidify our understanding from both sources. The information was the same but they were communicated in different ways. 
 
 Fitzpatrick, M. (2021, November 17). QComboBox - Drop-down selection widget. Python GUIs. Retrieved May 3, 2022, from https://www.pythonguis.com/docs/qcombobox/ 
   This source was particulalry useful reagarding how to make drop down menus using the QComboBox widget. The nature of our projct requires us to use them regularly. 
