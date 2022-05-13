@@ -88,7 +88,7 @@ class TestMainWindow(unittest.TestCase):
         self.assertNotEqual(read_group, state = "normal")
 
     def test_normal_fields(self):
-         """""Tests that all of the address book fields are set to normal so they can be edited again"""""
+        """""Tests that all of the address book fields are set to normal so they can be edited again"""""
         norm_fname = self.fname_entry.configure(state='normal') #sets field to normal
         self.assertEqual(norm_fname, state = "normal") #checks if field is set to normal so user can edit
         self.assertNotEqual(norm_fname, state = "readonly") #checks if field is not set to readonly (or disabled), which means user won't be able to edit
