@@ -36,6 +36,8 @@ Jarana, N. (2021, June 10). How to get selected value from Listbox in Tkinter? G
   It provided us with example code and an explanantion that detailed the purpose behind it. This was a nice model we used throughout our code. 
 
 Kumar, B., &amp; KumarEntrepreneur, B. (2022, February 7). Python Tkinter messagebox + 19 Examples. Python Guides. Retrieved May 5, 2022, from https://pythonguides.com/python-tkinter-messagebox/ 
+  This source was helpful in creating the different message boxes that would pop up during our program. This source was really useful because it provided us with 
+  multiple examples that we could use as starting point for our codes. The variety in content on this source was widely appreciated. 
 
 Rathod, A. K. (2020, December 11). How to hide, recover and delete tkinter widgets? GeeksforGeeks. Retrieved May 5, 2022, from https://www.geeksforgeeks.org/how-to-hide-recover-and-delete-tkinter-widgets/ 
 
