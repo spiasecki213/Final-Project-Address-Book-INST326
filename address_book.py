@@ -1,6 +1,7 @@
 
 from tkinter import *
 import tkinter
+from turtle import update
 from ttkwidgets.autocomplete import AutocompleteCombobox
 import tkinter.messagebox as mb
 import sqlite3 as sql
@@ -84,7 +85,7 @@ class MainWindow(object):
         Does not return anything
         """        
         self.normal_fields() # Makes fields editable
- 
+        current_contact = self.listbox.curselection()
         fname = self.fname_strvar.get()
         lname = self.lname_strvar.get()
         address = self.address_entry.get(1.0, END)
@@ -101,11 +102,14 @@ class MainWindow(object):
         if fname == '' or lname == '':
             mb.showerror('Error!', "Please fill in the name fields.")
         else:
-            l = self.listbox.get(ACTIVE)
-            cursor.execute("""UPDATE ADDRESS_BOOK SET FIRSTNAME=?,
-                LASTNAME=?, ADDRESS=?, PHONENUMBER=?, EMAIL=?, ALTEMAIL=?,
-                PRONOUNS=?, NOTES=?, GROUPS=?""", (fname, lname, address, phone, 
-                email, altemail, pronouns, notes, group))  # SQL script
+            # Inserts edited contact
+            cursor.execute(
+                """INSERT INTO ADDRESS_BOOK (FIRSTNAME, LASTNAME, ADDRESS,
+                PHONENUMBER, EMAIL, ALTEMAIL, PRONOUNS, NOTES, GROUPS)
+                VALUES (?,?,?,?,?,?,?,?,?)""", (fname, lname, address, phone,
+                email, altemail, pronouns, notes, group))
+            # Deletes old contact
+            cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
             connector.commit()
             mb.showinfo('Contact edited', "Your contact has been successfully edited.")
             self.listbox.delete(0, END)
