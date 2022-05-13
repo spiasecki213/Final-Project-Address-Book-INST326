@@ -3,8 +3,22 @@ we will be providing a set of instructions here that will allow the user
 to test each function of the code.
 
 
+
+PRE-STEP 1:
+    In this repository, we have included the file "test_contacts.db". This 
+database is to be used when testing the code in this document. To use it, open address_book.py.
+Under the import statements, there should be a line of code that reads as follows:
+        connector = sql.connect('contacts.db')
+    Please replace "contacts.db" with "test_contacts.db". You will know if you've 
+done this correctly in the next step when running the function. 
+
+
+
 ~~~~ Step 1: Opening the code ~~~~
-Open the terminal in VS Code and type "py address_book.py" or "python address_book.py"
+    Open the terminal in VS Code and type "py address_book.py" or "python address_book.py".
+As mentioned in Pre-Step 1, you will know if you've correctly opened the test_contacts.db 
+if there is a list of contacts displayed in the listbox under "Saved Contacts". If this is the case, 
+proceed to Step 2.
 
 
 
@@ -40,8 +54,7 @@ Select "OK" from the error window and click the "Clear Fields" button to continu
 to un-select any selected contact in the listbox. Once no contact is selected, 
 click the "View Contact" button.
 There should be an error window that pops up that says "Error! No contact 
-selected. Please select a contact to continue."
-Select "OK" from the error window and proceed.
+selected. Please select a contact to continue." Select "OK" from the error window and proceed.
 
 ############### WORKING CASE ###############
     Select the contact you created from the contact list. The name should be 
@@ -67,7 +80,32 @@ Click the "Clear Fields" button to reset the fields back to normal and to unsele
 the contact in the listbox.
 
 
-~~~~ Step 4: Editing a contact ~~~~
+
+~~~~ Step 4: Searching through contacts ~~~~
+############### NON-WORKING CASE ###############
+    To test the non-working case, start off by clicking the "Search" button 
+without typing anything in the search box. An error messagebox should pop up saying,
+"Error! Please enter a search term to proceed." Select "OK" from the error window
+and proceed.
+
+############### WORKING CASE ###############
+For this search term, we will be searching for contacts using different cases.
+        First Case: Search by first name
+    Enter "Doug" into the search bar and press the "Search" button. The results should show 
+two contacts, "Doug Kammerer" and "Doug Grant". Press the "Back" button to go back to all of the 
+results and clear the search bar.
+        Second Case: Search by last name
+    Enter "Smith" into the search bar. Press the "Search" button. The result should show 
+one contact, "Daniella Smith". Press the "Back" button.
+        Third Case: Search by full name
+    Enter "Hugh Jass" into the search bar. Press the "Search" button. The results should show 
+one contact, "Hugh Jass". Press the "Back" button.
+        Fourth Case: Search using the wrong spelling
+    Enter "O'Connor" into the search bar and press "Search". There should be no results that show 
+because Kim O'Conner's last name is spelled -er instead of -or. Press the "Back" button.
+
+
+~~~~ Step 5: Editing a contact ~~~~
 ############### NON-WORKING CASE ###############
     To test the non-working case, start off by clicking the "Clear Fields" button 
 to un-select any selected contact in the listbox. Once no contact is selected, 
@@ -77,41 +115,13 @@ selected. Please select a contact to continue."
 Select "OK" from the error window and proceed.
 
 ############### WORKING CASE ###############
-    For this example, we will be adding a new contact. Using the add_contact() procedure we 
-went over in step 1, add the following information into a NEW contact:
-        First Name: Danela
-        Last Name: Smith
-        Address: 2134 Green Dr
-                Niceville, KY, USA 90007
-        Phone #: 513-222-3333
-        Email: dsmith2@umd.edu
-        Alternate Email: danelasmith2@gmail.com
-        Pronouns: they/them
-        Notes: INST327 TA
-            Office Hours: MWF 3-4pm on Zoom
-        Group: TA
-    Select the contact you created from the contact list. The name should be 
-visible as "Danela Smith" if the add contact procedure was executed correctly. If the 
-name is correctly selected, it should be highlighted in the listbox. Click "Edit 
-Contact" and the contact information should show up in the you used to enter in 
-the information. These fields SHOULD be able to be edited, because of the 
-normal_fields() function called in edit_contact. The contact information in these fields 
-should show as follows:
-        First Name: Danela
-        Last Name: Smith
-        Address: 2134 Green Dr
-                Niceville, KY, USA 90007
-        Phone #: 513-222-3333
-        Email: dsmith2@umd.edu
-        Alternate Email: danelasmith2@gmail.com
-        Pronouns: they/them
-        Notes: INST327 TA
-            Office Hours: MWF 3-4pm on Zoom
-        Group: TA
-    Now, to edit the contact. It appears that when we entered the contact into the list, 
-we misspelled Daniella's name. It should be "Daniella" instead of "Danela". After selecting 
+    For this example, we will be editing a contact from the list of contacts 
+already in the database. From "Saved Contacts" select "Danela Smith" and then 
+select the "Edit Contact" button.
+    It appears that when the contact was entered someone misspelled 
+Daniella's name. It should be "Daniella" instead of "Danela". After selecting 
 "Danela Smith" from the contact list and clicking "Edit Contact", we should change Daniella's 
-name in the contact fields. Please edit the First Name  and Alternate Email field to read as follows:
+name in the contact fields. Please edit the First Name and Alternate Email field to read as follows:
         First Name: Daniella
         Alternate Email: daniellasmith2@gmail.com
     After changing the field, click the "Edit" button that has appeared below the fields. 
@@ -127,7 +137,7 @@ To confirm that the contact has been edited, select "Daniella Smith" from the li
         Email: dsmith2@umd.edu
         Alternate Email: daniellasmith2@gmail.com
         Pronouns: they/them
-        Notes: INST327 TA
+        Notes: INST327-0202 TA
             Office Hours: MWF 3-4pm on Zoom
         Group: TA
     Click the "Clear Fields" button to reset the fields back to normal and to unselect 
@@ -135,32 +145,34 @@ the contact in the listbox.
 
 
 
-~~~~ Step 5: Deleting a single contact ~~~~
-############### WORKING CASE ###############
-
+~~~~ Step 6: Deleting a single contact ~~~~
 ############### NON-WORKING CASE ###############
+To test the non-working case, start off by clicking the "Clear Fields" button 
+to un-select any selected contact in the listbox. Once no contact is selected, 
+click the "Delete Contact" button.
+    There should be an error window that pops up that says "Error! No contact 
+selected. Please select a contact to continue."
+Select "OK" from the error window and proceed.
 
-
-
-
-~~~~ Step 6: Deleting all contacts ~~~~
 ############### WORKING CASE ###############
+    For this step, we will be deleting Kim O'Connor's contact. As we can see from the notes section, 
+we knew Kim from HIST111, a Gen-Ed class that we aren't taking anymore. Because of this, we can 
+delete her contact. To do so, click the "Delete Contact" button. Once this is clicked, a messagebox
+pops up saying "Are you sure you want to delete this contact? NOTE: This action cannot be undone."
+    First, test a case where you might change your mind about deleting a contact. Select "No".
+Once selected, the messagebox is closed. Next, click the "Delete Contact" button again and this time, 
+select "Yes". A message should then pop up saying: "Contact deleted. The contact you have selected 
+has been deleted.". Proceed to the next step.
 
-############### NON-WORKING CASE ###############
 
 
-
-
-~~~~ Step 7: Clearing Fields ~~~~
+~~~~ Step 7: Deleting all contacts ~~~~
 ############### WORKING CASE ###############
-
-############### NON-WORKING CASE ###############
-
-
-
-
-~~~~ Step 8: Searching through contacts ~~~~
-############### WORKING CASE ###############
-
-############### NON-WORKING CASE ###############
+For this step, we will be deleting all of the contacts. To do so, click the "Delete All Contacts" button. 
+Once this is clicked, a messagebox pops up saying "Are you sure you want to delete ALL contacts? 
+NOTE: This action cannot be undone."
+    First, test a case where you might change your mind about deleting the contacts. Select "No".
+Once selected, the messagebox is closed. Next, click the "Delete Contact" button again and this time, 
+select "Yes". A message should then pop up saying: "Success. All of the contacts in your address book 
+have been deleted". Proceed to the next step.
 
