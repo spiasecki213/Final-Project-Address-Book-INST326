@@ -44,3 +44,5 @@ Rathod, A. K. (2020, December 11). How to hide, recover and delete tkinter widge
   often come back to it for a refresher. 
 
 Rora, R. (2021, September 23). PyQt5 – Hide push button on click. GeeksforGeeks. Retrieved May 6, 2022, from https://www.geeksforgeeks.org/pyqt5-hide-push-button-on-click/ 
+  This source was extremely useful for the cleanliness of out GUI. We wanted to have some of the buttons in our program to be hidden once its purpose has been 
+  fulfilled. We were grateful to find this source as it gave use the iformation we needed to achieve this. 
