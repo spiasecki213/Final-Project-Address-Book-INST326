@@ -16,18 +16,29 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS ADDRESS_BOOK (S_NO INTEGER PRIMARY 
 
 #################### GLOBAL FUNCTIONS ####################
 def hide_widget(widget):
-    """_summary_
+    """Temporarily hides the button from view
 
     Args:
-        widget (_type_): _description_
+        widget (tkinter button): the selected button
     """    
     widget.place_forget()
 
 def show_widget(widget):
+    """Shows the widget after being hidden
+
+    Args:
+        widget (tkinter button): the selected button
+    """    
     widget.place(relx=0.3, rely=0.82)
 
-class MainWindow(object):
 
+class MainWindow(object):
+    """A class for the main window of the address book
+
+    Args:
+        object (window root): the root of the tkinter page
+        listbox (listbox): the list of contacts
+    """
     #################### CONTACT FUNCTIONS ####################
     def add_contact(self):
         """Adds a contact to the database and updates
