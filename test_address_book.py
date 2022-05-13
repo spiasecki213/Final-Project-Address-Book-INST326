@@ -76,7 +76,34 @@ class TestMainWindow(unittest.TestCase):
         pass
 
     def test_normal_fields(self):
-        pass
+         """""Tests that all of the address book fields are set to normal so they can be edited again"""""
+        norm_fname = self.fname_entry.configure(state='normal') #sets field to normal
+        self.assertEqual(norm_fname, state = "normal") #checks if field is set to normal so user can edit
+        self.assertNotEqual(norm_fname, state = "readonly") #checks if field is not set to readonly (or disabled), which means user won't be able to edit
+        norm_lname = self.lname_entry.configure(state='normal')
+        self.assertEqual(norm_lname, state = "normal")
+        self.assertNotEqual(norm_lname, state = "readonly")
+        norm_address = self.address_entry.configure(state='normal')
+        self.assertEqual(norm_address, state = "normal")
+        self.assertNotEqual(norm_address, state = "readonly")
+        norm_phone = self.phone_entry.configure(state='normal')
+        self.assertEqual(norm_phone, state = "normal")
+        self.assertNotEqual(norm_phone, state = "readonly")
+        norm_email = self.email_entry.configure(state='normal')
+        self.assertEqual(norm_email, state = "normal")
+        self.assertNotEqual(norm_email, state = "readonly")
+        norm_altemail = self.altemail_entry.configure(state='normal')
+        self.assertEqual(norm_altemail, state = "normal")
+        self.assertNotEqual(norm_altemail, state = "readonly")
+        norm_pronouns = self.pronouns_entry.configure(state='normal')
+        self.assertEqual(norm_pronouns, state = "normal")
+        self.assertNotEqual(norm_pronouns, state = "readonly")
+        norm_notes = self.notes_entry.configure(state='normal')
+        self.assertEqual(norm_notes, state = "normal")
+        self.assertNotEqual(norm_notes, state = "disabled")
+        norm_group = self.group_entry.configure(state='normal')
+        self.assertEqual(norm_group, state = "normal")
+        self.assertNotEqual(norm_group, state = "disabled")
 
     def test__init__(self, root):
         pass
