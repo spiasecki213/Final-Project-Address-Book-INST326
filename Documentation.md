@@ -21,12 +21,15 @@ One of our import statement includes the code `from ttkwidgets.autocomplete impo
 Amos, D. (2022, March 30). Python GUI programming with Tkinter. Real Python. Retrieved May 4, 2022, from https://realpython.com/python-gui-tkinter/ 
   This source was extremely useful as a starting point for our project. We were not too familiar with Tkinter at the start of the project. It provided examples on how 
   to build a GUI and use the widgets to customize our project. 
+  
 Colors. wikiPython. (2022, March 22). Retrieved May 1, 2022, from https://www.wikipython.com/tkinter-ttk-tix/summary-information/colors/ 
 
-Create UI using tkinter in Python. Create UI using Tkinter in Python. (n.d.). Retrieved May 1, 2022, from https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python 
+Create UI using tkinter in Python. Create UI using Tkinter in Python. (n.d.). Retrieved May 1, 2022, from https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python
 
 Fitzpatrick, M. (2021, November 17). QComboBox - Drop-down selection widget. Python GUIs. Retrieved May 3, 2022, from https://www.pythonguis.com/docs/qcombobox/ 
-
+  This source was particulalry useful reagarding how to make drop down menus using the QComboBox widget. The nature of our projct requires us to use them regularly. 
+  Having a source that focuses on this widget was extremely helpful as it provided us with different ways and methods we could utalize for our program, as opposed to 
+  the introductory basics.
 Jarana, N. (2021, June 10). How to get selected value from Listbox in Tkinter? GeeksforGeeks. Retrieved May 6, 2022, from https://www.geeksforgeeks.org/how-to-get-selected-value-from-listbox-in-tkinter/ 
 
 Kumar, B., &amp; KumarEntrepreneur, B. (2022, February 7). Python Tkinter messagebox + 19 Examples. Python Guides. Retrieved May 5, 2022, from https://pythonguides.com/python-tkinter-messagebox/ 
