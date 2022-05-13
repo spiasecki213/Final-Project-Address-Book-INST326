@@ -102,14 +102,15 @@ class MainWindow(object):
         if fname == '' or lname == '':
             mb.showerror('Error!', "Please fill in the name fields.")
         else:
+            # Deletes old contact
+            cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
             # Inserts edited contact
             cursor.execute(
                 """INSERT INTO ADDRESS_BOOK (FIRSTNAME, LASTNAME, ADDRESS,
                 PHONENUMBER, EMAIL, ALTEMAIL, PRONOUNS, NOTES, GROUPS)
                 VALUES (?,?,?,?,?,?,?,?,?)""", (fname, lname, address, phone,
                 email, altemail, pronouns, notes, group))
-            # Deletes old contact
-            cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
+            
             connector.commit()
             mb.showinfo('Contact edited', "Your contact has been successfully edited.")
             self.listbox.delete(0, END)
@@ -140,7 +141,7 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE), self.listbox.get(ACTIVE))
+        cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
         connector.commit() # Commit the changes to the database
         mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
         self.listbox.delete(0, END)
