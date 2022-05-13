@@ -141,7 +141,7 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        ans = mb.askyesno(title='Confirmation', message="""Are you sure you want to delete this contacts? NOTE: this action cannot be undone.""")
+        ans = mb.askyesno(title='Confirmation', message="""Are you sure you want to delete this contact? NOTE: This action cannot be undone.""")
         if ans:
             cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
             connector.commit() # Commit the changes to the database
@@ -164,7 +164,7 @@ class MainWindow(object):
             cursor.execute('DELETE FROM ADDRESS_BOOK') # Deletes ALL contacts
             connector.commit() # Commit the changes to the database
 
-            mb.showinfo('Success!', "All of the records in your address book have been deleted")
+            mb.showinfo('Success!', "All of the contacts in your address book have been deleted")
             
             self.listbox.delete(0, END)
             self.list_contacts()
@@ -234,12 +234,13 @@ class MainWindow(object):
         if query != '' and query != "Search Contacts...":
             show_widget(self.back_button)
             self.listbox.delete(0, END)
-            curr = connector.execute('SELECT * FROM ADDRESS_BOOK WHERE FIRSTNAME LIKE ?', ('%'+query+'%', ))
+            curr = connector.execute('''SELECT * FROM ADDRESS_BOOK WHERE (FIRSTNAME LIKE ? OR LASTNAME LIKE ?) 
+                    OR (FIRSTNAME LIKE ? AND LASTNAME LIKE ?)''', ('%'+query+'%', '%'+query+'%', '%'+query+'%', '%'+query+'%'))
             check = curr.fetchall() # Fetches all of the search results
            
             # Displays the search results in the listbox
             for data in check:
-                self.listbox.insert(END, data[1])
+                self.listbox.insert(END, (data[1], data[2]))
         else:
             mb.showerror('Error!', "Please enter a search term to proceed.")
 
