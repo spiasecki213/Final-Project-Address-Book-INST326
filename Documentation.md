@@ -30,7 +30,10 @@ Fitzpatrick, M. (2021, November 17). QComboBox - Drop-down selection widget. Pyt
   This source was particulalry useful reagarding how to make drop down menus using the QComboBox widget. The nature of our projct requires us to use them regularly. 
   Having a source that focuses on this widget was extremely helpful as it provided us with different ways and methods we could utalize for our program, as opposed to 
   the introductory basics.
+  
 Jarana, N. (2021, June 10). How to get selected value from Listbox in Tkinter? GeeksforGeeks. Retrieved May 6, 2022, from https://www.geeksforgeeks.org/how-to-get-selected-value-from-listbox-in-tkinter/ 
+  This was another specified website that helped explain what Listbox was in Tkniter and how we could retreieve the selected value our prospective users would make. 
+  It provided us with example code and an explanantion that detailed the purpose behind it. This was a nice model we used throughout our code. 
 
 Kumar, B., &amp; KumarEntrepreneur, B. (2022, February 7). Python Tkinter messagebox + 19 Examples. Python Guides. Retrieved May 5, 2022, from https://pythonguides.com/python-tkinter-messagebox/ 
 
