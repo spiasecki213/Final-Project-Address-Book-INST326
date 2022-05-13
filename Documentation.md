@@ -19,7 +19,8 @@ One of our import statement includes the code `from ttkwidgets.autocomplete impo
 
 
 Amos, D. (2022, March 30). Python GUI programming with Tkinter. Real Python. Retrieved May 4, 2022, from https://realpython.com/python-gui-tkinter/ 
-
+  This source was extremely useful as a starting point for our project. We were not too familiar with Tkinter at the start of the project. It provided examples on how 
+  to build a GUI and use the widgets to customize our project. 
 Colors. wikiPython. (2022, March 22). Retrieved May 1, 2022, from https://www.wikipython.com/tkinter-ttk-tix/summary-information/colors/ 
 
 Create UI using tkinter in Python. Create UI using Tkinter in Python. (n.d.). Retrieved May 1, 2022, from https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python 
