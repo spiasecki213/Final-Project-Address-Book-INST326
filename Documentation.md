@@ -23,6 +23,8 @@ Amos, D. (2022, March 30). Python GUI programming with Tkinter. Real Python. Ret
   to build a GUI and use the widgets to customize our project. 
   
 Colors. wikiPython. (2022, March 22). Retrieved May 1, 2022, from https://www.wikipython.com/tkinter-ttk-tix/summary-information/colors/ 
+  This source was one of our favorites. We wanted our program to be for the UMD community and had the idea of using the university's colors as an added touch for the 
+  design. The overall look of our program came out really good and that was thanks to this source. 
 
 Create UI using tkinter in Python. Create UI using Tkinter in Python. (n.d.). Retrieved May 1, 2022, from https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python
 
