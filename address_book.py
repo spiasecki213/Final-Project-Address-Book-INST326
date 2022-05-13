@@ -234,7 +234,7 @@ class MainWindow(object):
         if query != '' and query != "Search Contacts...":
             show_widget(self.back_button)
             self.listbox.delete(0, END)
-            curr = connector.execute('''SELECT * FROM ADDRESS_BOOK WHERE (FIRSTNAME LIKE ? OR LASTNAME LIKE ?) 
+            curr = connector.execute('''SELECT * FROM ADDRESS_BOOK WHERE (FIRSTNAME LIKE ?) OR (LASTNAME LIKE ?) 
                     OR (FIRSTNAME LIKE ? AND LASTNAME LIKE ?)''', ('%'+query+'%', '%'+query+'%', '%'+query+'%', '%'+query+'%'))
             check = curr.fetchall() # Fetches all of the search results
            
