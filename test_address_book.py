@@ -73,7 +73,34 @@ class TestMainWindow(unittest.TestCase):
         self.assertEqual(search_ab_3, 'Search Contacts...') #search should return error and prompt user to enter a value
 
     def test_read_only_fields(self):
-        pass
+        """""Tests that all of the address book fields can only be read, and can't be edited"""""
+        read_fname = self.fname_entry.configure(state='readonly') #sets field to a read-only state
+        self.assertEqual(read_fname, state = "readonly") #checks that the state is read-only/disabled and can't be edited
+        self.assertNotEqual(read_fname, state = "normal") #checks that the state is not normal, which means the field can be edited by users
+        read_lname = self.lname_entry.configure(state='readonly')
+        self.assertEqual(read_lname, state = "readonly")
+        self.assertNotEqual(read_lname, state = "normal")
+        read_address = self.address_entry.configure(state='disabled')
+        self.assertEqual(read_address, state = "disabled")
+        self.assertNotEqual(read_address, state = "normal")
+        read_phone = self.phone_entry.configure(state='readonly')
+        self.assertEqual(read_phone, state = "readonly")
+        self.assertNotEqual(read_phone, state = "normal")
+        read_email = self.email_entry.configure(state='readonly')
+        self.assertEqual(read_email, state = "readonly")
+        self.assertNotEqual(read_email, state = "normal")
+        read_altemail = self.altemail_entry.configure(state='readonly')
+        self.assertEqual(read_altemail, state = "readonly")
+        self.assertNotEqual(read_altemail, state = "normal")
+        read_pronouns = self.pronouns_entry.configure(state='readonly')
+        self.assertEqual(read_pronouns, state = "readonly")
+        self.assertNotEqual(read_pronouns, state = "normal")
+        read_notes = self.notes_entry.configure(state='disabled')
+        self.assertEqual(read_notes, state = "disabled")
+        self.assertNotEqual(read_notes, state = "normal")
+        read_group = self.group_entry.configure(state='disabled')
+        self.assertEqual(read_group, state = "disabled")
+        self.assertNotEqual(read_group, state = "normal")
 
     def test_normal_fields(self):
          """""Tests that all of the address book fields are set to normal so they can be edited again"""""
