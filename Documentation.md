@@ -40,5 +40,7 @@ Kumar, B., &amp; KumarEntrepreneur, B. (2022, February 7). Python Tkinter messag
   multiple examples that we could use as starting point for our codes. The variety in content on this source was widely appreciated. 
 
 Rathod, A. K. (2020, December 11). How to hide, recover and delete tkinter widgets? GeeksforGeeks. Retrieved May 5, 2022, from https://www.geeksforgeeks.org/how-to-hide-recover-and-delete-tkinter-widgets/ 
+  This source was used to research how to hide, recover, and delete the widgets from the GUI of our code. We liked how specific this source was and would 
+  often come back to it for a refresher. 
 
 Rora, R. (2021, September 23). PyQt5 – Hide push button on click. GeeksforGeeks. Retrieved May 6, 2022, from https://www.geeksforgeeks.org/pyqt5-hide-push-button-on-click/ 
