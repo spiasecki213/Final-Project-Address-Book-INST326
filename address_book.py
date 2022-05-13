@@ -140,7 +140,7 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
+        cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE), self.listbox.get(ACTIVE))
         connector.commit() # Commit the changes to the database
         mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
         self.listbox.delete(0, END)

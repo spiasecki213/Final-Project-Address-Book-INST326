@@ -1,0 +1,96 @@
+For the aspects of the code that cannot be directly unit tested, 
+we will be providing a set of instructions here that will allow the user 
+to test each function of the code.
+
+~~~~ Step 1: Opening the code ~~~~
+Open the terminal in VS Code and type "py address_book.py" or "python address_book.py"
+
+
+~~~~ Step 2: Adding a contact ~~~~
+############### WORKING CASE ###############
+Select the "Add Contact" button and add your contact information. For this 
+example, we will be using the following information:
+First Name: Jane
+Last Name: Doe
+Address: 123 Main St
+         Anytown, USA 12345
+Phone #: 301-555-5555
+Email: jdoe123@umd.edu
+Alternate Email: janedoe123@gmail.com
+Pronouns: she/her
+Notes: From INST326 class
+Group: Student
+
+After entering this information, press the "Add" button that has appeared at 
+the bottom of the page. You should now see your contact in the contact listbox.
+
+############### NON-WORKING CASE ###############
+Select the "Add Contact" button and only add information in the FIRST NAME 
+field. For this example, only add "Jane" into the field next to the first name 
+label, and nothing in the other fields.
+There should be an error window that pops up that says "Error! Please fill in the name fields"
+Select "OK" from the error window and click the "Clear Fields" button to continue testing.
+
+~~~~ Step 3: Viewing a contact ~~~~
+############### NON-WORKING CASE ###############
+To test the non-working case, start off by clicking the "Clear Fields" button 
+to un-select any selected contact in the listbox. Once no contact is selected, 
+click the "View Contact" button.
+There should be an error window that pops up that says "Error! No contact 
+selected. Please select a contact to continue."
+Select "OK" from the error window and proceed.
+
+############### WORKING CASE ###############
+Select the contact you created from the contact list. The name should be 
+visible as "Jane Doe" if the add contact procedure was executed correctly. If the 
+name is correctly selected, it should be highlighted in the listbox. Click "View 
+Contact" and the contact information should show up in the you used to enter in 
+the information. However, these fields should not be able to be edited, because of the 
+read_only_fields() function. The contact information in these fields should show 
+as follows:
+First Name: Jane
+Last Name: Doe
+Address: 123 Main St
+         Anytown, USA 12345
+Phone #: 301-555-5555
+Email: jdoe123@umd.edu
+Alternate Email: janedoe123@gmail.com
+Pronouns: she/her
+Notes: From INST326 class
+Group: Student
+Click the "Clear Fields" button to reset the fields back to normal and to unselect 
+the contact in the listbox.
+
+
+~~~~ Step 4: Editing a contact ~~~~
+############### NON-WORKING CASE ###############
+To test the non-working case, start off by clicking the "Clear Fields" button 
+to un-select any selected contact in the listbox. Once no contact is selected, 
+click the "Edit Contact" button.
+There should be an error window that pops up that says "Error! No contact 
+selected. Please select a contact to continue."
+Select "OK" from the error window and proceed.
+
+############### WORKING CASE ###############
+
+
+~~~~ Step 5: Deleting a single contact ~~~~
+############### WORKING CASE ###############
+
+############### NON-WORKING CASE ###############
+
+~~~~ Step 6: Deleting all contacts ~~~~
+############### WORKING CASE ###############
+
+############### NON-WORKING CASE ###############
+
+~~~~ Step 7: Clearing Fields ~~~~
+############### WORKING CASE ###############
+
+############### NON-WORKING CASE ###############
+
+~~~~ Step 8: Searching through contacts ~~~~
+############### WORKING CASE ###############
+
+############### NON-WORKING CASE ###############
+
