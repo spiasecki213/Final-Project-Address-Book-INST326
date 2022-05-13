@@ -141,11 +141,13 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
-        connector.commit() # Commit the changes to the database
-        mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
-        self.listbox.delete(0, END)
-        self.list_contacts() # Show the remaining contacts
+        ans = mb.askyesno(title='Confirmation', message="""Are you sure you want to delete this contacts? NOTE: this action cannot be undone.""")
+        if ans:
+            cursor.execute('DELETE FROM ADDRESS_BOOK WHERE FIRSTNAME=? AND LASTNAME=?', self.listbox.get(ACTIVE))
+            connector.commit() # Commit the changes to the database
+            mb.showinfo('Contact deleted', "The contact you have selected has been deleted.")
+            self.listbox.delete(0, END)
+            self.list_contacts() # Show the remaining contacts
         
 
     def delete_all_contacts(self):
@@ -157,13 +159,15 @@ class MainWindow(object):
         # Ask the user if they are sure they want to delete the contact
         # If they don't, exit the window
         # If they do want to delete a contact, proceed with deleting the contact
-        cursor.execute('DELETE FROM ADDRESS_BOOK') # Deletes ALL contacts
-        connector.commit() # Commit the changes to the database
+        ans = mb.askyesno(title='Confirmation', message="""Are you sure you want to delete ALL contacts? NOTE: This action cannot be undone.""")
+        if ans:
+            cursor.execute('DELETE FROM ADDRESS_BOOK') # Deletes ALL contacts
+            connector.commit() # Commit the changes to the database
 
-        mb.showinfo('Success!', "All of the records in your address book have been deleted")
-        
-        self.listbox.delete(0, END)
-        self.list_contacts()
+            mb.showinfo('Success!', "All of the records in your address book have been deleted")
+            
+            self.listbox.delete(0, END)
+            self.list_contacts()
         
 
     def view_contact(self):
