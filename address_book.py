@@ -1,3 +1,4 @@
+
 from tkinter import *
 import tkinter
 from ttkwidgets.autocomplete import AutocompleteCombobox
@@ -15,6 +16,11 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS ADDRESS_BOOK (S_NO INTEGER PRIMARY 
 
 #################### GLOBAL FUNCTIONS ####################
 def hide_widget(widget):
+    """_summary_
+
+    Args:
+        widget (_type_): _description_
+    """    
     widget.place_forget()
 
 def show_widget(widget):
@@ -411,7 +417,7 @@ class MainWindow(object):
 
         # Button to reset the search bar and listbox
         self.back_button = Button(right_frame, text="Back", font=button_font, width=12,
-            command=lambda:[self.list_contacts(), hide_widget(self.back_button),
+            command=lambda:[self.listbox.delete(0, END), self.list_contacts(), hide_widget(self.back_button),
             self.search_entry.delete(0, END)])
         hide_widget(self.back_button)
 
